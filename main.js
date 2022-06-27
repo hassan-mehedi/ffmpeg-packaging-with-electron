@@ -5,9 +5,6 @@ const fs = require("fs");
 const { spawn } = require("child_process");
 const ffmpegPath = require("@ffmpeg-installer/ffmpeg").path.replace("app.asar", "app.asar.unpacked");
 
-const ffmpeg = require("fluent-ffmpeg");
-const pathToFfmpeg = require("ffmpeg-static");
-
 const videoOutputDirectory = path.join(__dirname, "/video/output");
 const videoInputDirectory = path.join(__dirname, "/video/input");
 
@@ -30,28 +27,8 @@ app.on("window-all-closed", () => {
     app.quit();
 });
 
-app.on("quit", (event) => {
-    // if (convertionProcess) {
-    //     event.preventDefault();
-    //     convertionProcess.kill();
-    //     app.quit();
-    // }
-});
-
 // Channels to listen to ipcRenderer
 ipcMain.on("convert-to-ogg", (event) => {
-    // convertionProcess = ffmpeg(`${videoInputDirectory}/bunny.mp4`)
-    //     .on("progress", function (progress) {
-    //         event.sender.send("convert-to-ogg-progress", progress);
-    //     })
-    //     .on("error", function (err) {
-    //         console.log("An error occurred: " + err.message);
-    //     })
-    //     .on("end", function () {
-    //         event.sender.send("convert-to-ogg-done");
-    //     })
-    //     .save(`${videoOutputDirectory}/bunny.ogg`);
-
     const convertionProcess = spawn(ffmpegPath, args);
 
     convertionProcess.stdout.on("data", (data) => {
