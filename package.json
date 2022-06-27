@@ -1,0 +1,31 @@
+{
+    "name": "electron-workshop",
+    "version": "1.0.0",
+    "description": "This is a workshop to introduce electronjs",
+    "main": "main.js",
+    "scripts": {
+        "start": "NODE_ENV=dev electron .",
+        "build": "electron-builder --windows"
+    },
+    "author": "Mehedi",
+    "license": "MIT",
+    "devDependencies": {
+        "electron": "^18.3.4",
+        "electron-builder": "^23.0.3"
+    },
+    "dependencies": {
+        "@ffmpeg-installer/ffmpeg": "^1.1.0",
+        "ffmpeg-static": "^5.0.0",
+        "fluent-ffmpeg": "^2.1.2"
+    },
+    "build": {
+        "appId": "electron.video.converter",
+        "productName": "A Video Converter",
+        "target": "NSIS",
+        "nsis": {
+            "oneClick": false,
+            "allowToChangeInstallationDirectory": true
+        },
+        "asar": false
+    }
+}
